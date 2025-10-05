@@ -28,7 +28,7 @@ st.set_page_config(layout="wide", page_title="NYC Ridesharing Demo", page_icon="
 
 
 # LOAD DATA ONCE
-@st.cache_resource
+@st.cache_data
 def load_data():
     path = "uber-raw-data-sep14.csv.gz"
     if not os.path.isfile(path):

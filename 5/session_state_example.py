@@ -4,11 +4,11 @@ import time
 st.title("Expensive Calculation Demo")
 
 # user inputs
-route = st.selectbox("Route", ["Red Line", "Blue Line", "Green Line"])
-cut_pct = st.slider("Cut percentage", 0.0, 50.0, 10.0, step=5.0)
+route = st.selectbox("CTA route to cut", ["Red Line", "Blue Line", "Green Line"])
+cut_pct = st.slider("What fraction of service to cut?", 0.0, 50.0, 10.0, step=5.0)
 
 # session_state key
-key = f"util_{route}_{cut_pct}"
+key = f"n_pass_{route}_{cut_pct}"
 
 # run the heavy job only if we haven't already stored it
 if key not in st.session_state:
@@ -16,5 +16,5 @@ if key not in st.session_state:
         time.sleep(3)  # stand‑in for a slow computation
         st.session_state[key] = (100 - cut_pct) * 1.2345  # fake result
 
-st.metric("Projected utilization", f"{st.session_state[key]:.2f}")
-st.write("Session state keys:", list(st.session_state.keys()))
+st.metric("Expected number of passengers per trip", f"{st.session_state[key]:.2f}")
+st.write("Session state keys (programmer tool, would not normally be shown to users):", list(st.session_state.keys()))

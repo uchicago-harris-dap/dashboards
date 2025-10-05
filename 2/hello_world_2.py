@@ -25,4 +25,4 @@ chart_to_show = (
     )
 )
 
-#st.altair_chart(chart_to_show)
+st.altair_chart(chart_to_show)
