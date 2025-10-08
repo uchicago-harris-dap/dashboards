@@ -28,6 +28,6 @@ chart_to_show = (
 #st.altair_chart(chart_to_show, use_container_width=True)
 
 #short-hand
-chart_to_show
+#chart_to_show
 
 
