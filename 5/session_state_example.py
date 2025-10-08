@@ -10,23 +10,15 @@ cut_pct = st.slider("What fraction of service to cut?", 0.0, 50.0, 10.0, step=5.
 if "counter" not in st.session_state:
     st.session_state.counter = 0
 
-# # session_state key
-# key = f"n_pass_{route}_{cut_pct}"
+# session_state key
+key = f"n_pass_{route}_{cut_pct}"
 
-# # run the heavy job only if we haven't already stored it
-# if key not in st.session_state:
-#     with st.spinner("Crunching numbers..."):
-#         time.sleep(3)  # stand‑in for a slow computation
-#         st.session_state[key] = (100 - cut_pct) * 1.2345  # fake result
-#     st.session_state.counter += 1
-
-@st.cache_data()
-def compute_passengers(route, cut_pct):
+# run the heavy job only if we haven't already stored it
+if key not in st.session_state:
     with st.spinner("Crunching numbers..."):
-        time.sleep(3)  # stand-in for a slow computation
+        time.sleep(3)  # stand‑in for a slow computation
+        st.session_state[key] = (100 - cut_pct) * 1.2345  # fake result
     st.session_state.counter += 1
-    return (100 - cut_pct) * 1.2345  # fake result
-expected_passengers = compute_passengers(route, cut_pct)
 
 st.metric("Expected number of passengers per trip", expected_passengers)
 

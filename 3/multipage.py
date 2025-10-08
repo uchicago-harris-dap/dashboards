@@ -1,5 +1,8 @@
 import streamlit as st
 
+st.set_page_config(page_title="Multipage Demo")
+
+
 def intro():
     import streamlit as st
 
