@@ -1,6 +1,8 @@
 import streamlit as st
 import time
 
+st.set_page_config(page_title="Expensive Calculation")
+
 st.title("Expensive Calculation Demo")
 
 # user inputs
@@ -20,7 +22,7 @@ if key not in st.session_state:
         st.session_state[key] = (100 - cut_pct) * 1.2345  # fake result
     st.session_state.counter += 1
 
-st.metric("Expected number of passengers per trip", expected_passengers)
+st.metric("Expected number of passengers per trip", f"{st.session_state[key]:.2f}")
 
 st.write(f"This page has run calculations {st.session_state.counter} times. Session state keys (programmer tool, would not normally be shown to users):", list(st.session_state.keys()))
 
