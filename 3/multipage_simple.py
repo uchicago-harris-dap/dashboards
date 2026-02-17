@@ -15,7 +15,7 @@ page_names_to_funcs = {
     "Second Page": my_second_page
 }
 
-# define the selection box
+# define the selection box  (default is "First Page")
 demo_name = st.sidebar.selectbox(
     "Choose a page", 
     page_names_to_funcs.keys()
