@@ -86,13 +86,11 @@ def filterdata(df, hour_selected):
 
 
 # CALCULATE MIDPOINT FOR GIVEN SET OF DATA
-@st.cache_data
 def mpoint(lat, lon):
     return (np.average(lat), np.average(lon))
 
 
-# FILTER DATA BY HOUR
-@st.cache_data
+# PLOT FILTERED DATA AS HISTOGRAM
 def histdata(df, hr):
     filtered = data[
         (df["date/time"].dt.hour >= hr) & (df["date/time"].dt.hour < (hr + 1))
